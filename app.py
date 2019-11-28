@@ -1,6 +1,9 @@
 from flask import Flask, render_template
 
+from flask_material import Material
+
 app = Flask(__name__)
+Material(app)
 
 @app.route('/')
 def index():
@@ -16,8 +19,11 @@ def portfolio():
 
 @app.route('/blog/<string:blog_id>')
 def blog(blog_id):
-    return render_template('blog/blog.html')
+    return render_template('blog/blog.html', blog_id=blog_id)
 
 @app.route('/contact')
 def contact():
     return render_template('contact/contact.html')
+
+if __name__ == '__main__':  
+    app.run(debug = True)  
