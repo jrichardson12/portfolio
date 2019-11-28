@@ -1,23 +1,23 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return 'Welcome to Index'
+    return render_template('splash/splash.html')
 
 @app.route('/about')
 def about():
-    return 'About Page'
+    return render_template('about/about.html')
 
 @app.route('/portfolio')
 def portfolio():
-    return 'Portfolio Page'
+    return render_template('portfolio/portfolio.html')
 
-@app.route('/blog')
-def blog():
-    return "Blog Page"
+@app.route('/blog/<string:blog_id>')
+def blog(blog_id):
+    return render_template('blog/blog.html')
 
 @app.route('/contact')
 def contact():
-    return "Contact page"
+    return render_template('contact/contact.html')
